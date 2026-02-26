@@ -7,13 +7,13 @@ from model import CNN
 
 device = torch.device("cpu")
 model = CNN()
-model.load_state_dict(torch.load('mnist_model.pth', map_location=device)) # Load your 99% accuracy model
+model.load_state_dict(torch.load('mnist_model.pth', map_location=device))
 model.eval()
 
 # Preprocessing
 transform = transforms.Compose([
     transforms.ToPILImage(),
-    transforms.Resize((28, 28), interpolation=cv2.INTER_AREA), # Sharp resizing
+    transforms.Resize((28, 28), interpolation=cv2.INTER_AREA), 
     transforms.ToTensor(),
     transforms.Normalize((0.1307,), (0.3081,))
 ])
@@ -84,4 +84,5 @@ while True:
     if key == ord('q'): break
 
 cap.release()
+
 cv2.destroyAllWindows()
